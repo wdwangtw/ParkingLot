@@ -3,21 +3,10 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class ParkingBoy
+    public class ParkingBoy : ParkingBoyBase
     {
-        readonly List<ParkingLot> parkingLots;
-
-        public ParkingBoy(List<ParkingLot> parkingLots)
+        public ParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots)
         {
-            this.parkingLots = new List<ParkingLot>();
-            this.parkingLots.AddRange(parkingLots);
-        }
-
-        public Car Pick(string carId)
-        {
-            return parkingLots.
-                Select(parkingLot => parkingLot.Pick(carId)).
-                FirstOrDefault(picked => picked != null);
         }
 
         public ParkCarResult Park(Car car)

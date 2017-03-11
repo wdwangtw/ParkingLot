@@ -44,9 +44,11 @@
     <Compile Include="Car.cs" />
     <Compile Include="ParkCarResult.cs" />
     <Compile Include="ParkingBoy.cs" />
+    <Compile Include="ParkingBoyBase.cs" />
     <Compile Include="ParkingLot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartParkingBoy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

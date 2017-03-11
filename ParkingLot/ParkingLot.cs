@@ -6,17 +6,17 @@ namespace ParkingLots
     public class ParkingLot
     {
         readonly List<Car> cars;
-        public int ParkingSpaceCount { get; private set; }
+        readonly int parkingSpaceCount;
 
         public ParkingLot(int parkingSpaceCount = 10)
         {
             cars = new List<Car>(parkingSpaceCount);
-            ParkingSpaceCount = parkingSpaceCount;
+            this.parkingSpaceCount = parkingSpaceCount;
         }
 
         public ParkCarResult Park(Car car)
         {
-            if (cars.Count != ParkingSpaceCount)
+            if (cars.Count != parkingSpaceCount)
             {
                 cars.Add(car);
                 return ParkCarResult.Success;
@@ -30,6 +30,11 @@ namespace ParkingLots
             Car picked = cars.FirstOrDefault(car => car.Id == carId);
             cars.Remove(picked);
             return picked;
+        }
+
+        public int EmptyParkingSpace()
+        {
+            return parkingSpaceCount - cars.Count;
         }
     }
 }
