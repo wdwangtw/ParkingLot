@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLot", "ParkingLot\ParkingLot.csproj", "{B73FB198-2E00-4264-961C-8C49AD07B8F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLots", "ParkingLot\ParkingLots.csproj", "{B73FB198-2E00-4264-961C-8C49AD07B8F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ParkingLot", "Test_ParkingLot\Test_ParkingLot.csproj", "{80300939-9D62-443A-9213-54CB4C150A1D}"
 EndProject

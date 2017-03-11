@@ -55,13 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ParkingBoyFacts.cs" />
+    <Compile Include="ParkingLotFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ParkingLot\ParkingLot.csproj">
+    <ProjectReference Include="..\ParkingLot\ParkingLots.csproj">
       <Project>{b73fb198-2e00-4264-961c-8c49ad07b8f6}</Project>
-      <Name>ParkingLot</Name>
+      <Name>ParkingLots</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

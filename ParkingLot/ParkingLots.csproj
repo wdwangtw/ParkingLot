@@ -7,8 +7,8 @@
     <ProjectGuid>{B73FB198-2E00-4264-961C-8C49AD07B8F6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ParkingLot</RootNamespace>
-    <AssemblyName>ParkingLot</AssemblyName>
+    <RootNamespace>ParkingLots</RootNamespace>
+    <AssemblyName>ParkingLots</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Car.cs" />
+    <Compile Include="ParkCarResult.cs" />
+    <Compile Include="ParkingBoy.cs" />
+    <Compile Include="ParkingLot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
