@@ -3,6 +3,7 @@
     public enum ParkCarResult
     {
         Success,
-        NoParkingSpace
+        NoParkingSpace,
+        NoParkingBoyType
     }
 }

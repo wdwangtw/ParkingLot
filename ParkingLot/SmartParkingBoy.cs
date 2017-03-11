@@ -5,13 +5,8 @@ namespace ParkingLots
 {
     public class SmartParkingBoy : ParkingBoyBase
     {
-        public SmartParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots)
+        public SmartParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots, ParkingBoyType.Smart)
         {
-        }
-
-        public ParkCarResult Park(Car car)
-        {
-            return parkingLots.OrderByDescending(p => p.EmptyParkingSpace()).ToList()[0].Park(car);
         }
     }
 }
