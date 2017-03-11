@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
-    <Compile Include="ParkCarByCommonBoy.cs" />
-    <Compile Include="ParkCarBySmartBoy.cs" />
+    <Compile Include="IParker.cs" />
+    <Compile Include="CommonParker.cs" />
+    <Compile Include="SmartParker.cs" />
     <Compile Include="ParkCarResult.cs" />
-    <Compile Include="ParkCarBySuperBoy.cs" />
+    <Compile Include="SuperParker.cs" />
+    <Compile Include="ParkerFactory.cs" />
     <Compile Include="ParkingBoy.cs" />
     <Compile Include="ParkingBoyBase.cs" />
     <Compile Include="ParkingBoyType.cs" />

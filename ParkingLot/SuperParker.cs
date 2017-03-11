@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class ParkCarBySuperBoy
+    public class SuperParker : IParker
     {
-        public ParkCarResult ParkCar(Car car, List<ParkingLot> parkingLots)
+        public ParkCarResult ParkCar(List<ParkingLot> parkingLots, Car car)
         {
             return parkingLots.OrderByDescending(p => p.EmptyParkingSpaceRatio()).ToList()[0].Park(car);
         }

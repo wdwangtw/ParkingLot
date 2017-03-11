@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class ParkCarByCommonBoy
+    public class CommonParker : IParker
     {
-        public ParkCarResult ParkCar(Car car, List<ParkingLot> parkingLots)
+        public ParkCarResult ParkCar(List<ParkingLot> parkingLots, Car car)
         {
             return parkingLots.Any(parkingLot => parkingLot.Park(car) == ParkCarResult.Success)
                 ? ParkCarResult.Success
