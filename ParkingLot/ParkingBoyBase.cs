@@ -17,7 +17,14 @@ namespace ParkingLots
 
         public ParkCarResult Park(Car car)
         {
-            return ParkCarResult.Success;
+            switch (parkingBoyType)
+            {
+                case ParkingBoyType.Commen:
+                    return parkingLots.Any(parkingLot => parkingLot.Park(car) == ParkCarResult.Success)
+                                 ? ParkCarResult.Success
+                                 : ParkCarResult.NoParkingSpace;
+            }
+            return ParkCarResult.NoParkingSpace;
         }
 
         public Car Pick(string carId)
