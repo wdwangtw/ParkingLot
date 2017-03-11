@@ -15,17 +15,9 @@ namespace ParkingLots
 
         public Car Pick(string carId)
         {
-            foreach (var parkingLot in parkingLots)
-            {
-                Car picked = parkingLot.Pick(carId);
-                if (picked != null)
-                {
-                    return picked;
-                }
-            }
-
-            return null;
-
+            return parkingLots.
+                Select(parkingLot => parkingLot.Pick(carId)).
+                FirstOrDefault(picked => picked != null);
         }
 
         public ParkCarResult Park(Car car)
