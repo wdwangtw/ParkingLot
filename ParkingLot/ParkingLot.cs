@@ -36,5 +36,10 @@ namespace ParkingLots
         {
             return parkingSpaceCount - cars.Count;
         }
+
+        public double EmptyParkingSpaceRatio()
+        {
+            return EmptyParkingSpace()*1.0 / parkingSpaceCount;
+        }
     }
 }

@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SuperParkingBoyFacts.cs" />
     <Compile Include="SmartParkingBoyFacts.cs" />
     <Compile Include="ParkingBoyFacts.cs" />
     <Compile Include="ParkingLotFacts.cs" />
