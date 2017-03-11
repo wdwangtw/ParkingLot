@@ -20,9 +20,15 @@ namespace ParkingLots
             switch (parkingBoyType)
             {
                 case ParkingBoyType.Commen:
-                    return ParkCarCommen(car, parkingLots);
+                {
+                    var parkCarByCommonBoy = new ParkCarByCommonBoy();
+                    return parkCarByCommonBoy.ParkCar(car, parkingLots);
+                }
                 case ParkingBoyType.Smart:
-                    return ParkCarSmart(car, parkingLots);
+                {
+                    var parkCarBySmartBoy = new ParkCarBySmartBoy();
+                    return parkCarBySmartBoy.ParkCar(car, parkingLots);
+                }
                 case ParkingBoyType.Super:
                 {
                     var parkCarSUper = new ParkCarBySuperBoy();
@@ -31,18 +37,6 @@ namespace ParkingLots
                 default:
                     return ParkCarResult.NoParkingBoyType;
             }
-        }
-
-        static ParkCarResult ParkCarSmart(Car car, List<ParkingLot> parkingLots)
-        {
-            return parkingLots.OrderByDescending(p => p.EmptyParkingSpace()).ToList()[0].Park(car);
-        }
-
-        static ParkCarResult ParkCarCommen(Car car, List<ParkingLot> parkingLots)
-        {
-            return parkingLots.Any(parkingLot => parkingLot.Park(car) == ParkCarResult.Success)
-                ? ParkCarResult.Success
-                : ParkCarResult.NoParkingSpace;
         }
 
         public Car Pick(string carId)

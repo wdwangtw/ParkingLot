@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
+    <Compile Include="ParkCarByCommonBoy.cs" />
+    <Compile Include="ParkCarBySmartBoy.cs" />
     <Compile Include="ParkCarResult.cs" />
     <Compile Include="ParkCarBySuperBoy.cs" />
     <Compile Include="ParkingBoy.cs" />
