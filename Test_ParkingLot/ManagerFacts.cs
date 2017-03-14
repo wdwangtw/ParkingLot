@@ -12,7 +12,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var manager = new Manager(new List<ParkingLot> {parkingLot}, new List<ParkingBoyBase>());
+            var manager = new Manager(new List<PickerParker> { parkingLot });
             manager.Park(car);
             
             Car pickedCar = parkingLot.Pick(carId);
@@ -26,7 +26,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var manager = new Manager(new List<ParkingLot> { parkingLot }, new List<ParkingBoyBase>());
+            var manager = new Manager(new List<PickerParker> { parkingLot });
             parkingLot.Park(car);
 
             Car pickedCar = manager.Pick(carId);
@@ -40,8 +40,8 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoy = new SuperParkingBoy(new List<ParkingLot>{parkingLot});
-            var manager = new Manager(new List<ParkingLot>(), new List<ParkingBoyBase>{parkingBoy});
+            var parkingBoy = new SuperParkingBoy(new List<PickerParker> { parkingLot });
+            var manager = new Manager(new List<PickerParker>{ parkingBoy });
             manager.Park(car);
 
             Car pickedCar = parkingBoy.Pick(carId);
@@ -55,8 +55,8 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoy = new SuperParkingBoy(new List<ParkingLot> { parkingLot });
-            var manager = new Manager(new List<ParkingLot>(), new List<ParkingBoyBase> { parkingBoy });
+            var parkingBoy = new SuperParkingBoy(new List<PickerParker> { parkingLot });
+            var manager = new Manager(new List<PickerParker> { parkingBoy });
             parkingBoy.Park(car);
             Car pickedCar = manager.Pick(carId);
 
@@ -69,8 +69,8 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoy = new SuperParkingBoy(new List<ParkingLot> { parkingLot });
-            var manager = new Manager(new List<ParkingLot>(), new List<ParkingBoyBase> { parkingBoy });
+            var parkingBoy = new SuperParkingBoy(new List<PickerParker> { parkingLot });
+            var manager = new Manager(new List<PickerParker> { parkingBoy });
             manager.Park(car);
 
             Car pickedCar = manager.Pick(carId);
@@ -83,8 +83,8 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(1);
             var secondParkingLot = new ParkingLot(1);
-            var parkingBoys = new List<ParkingBoyBase> { new ParkingBoy(new List<ParkingLot> { secondParkingLot }) };
-            var manager = new Manager(new List<ParkingLot> { firstParkingLot }, parkingBoys);
+            var parkingBoy = new ParkingBoy(new List<PickerParker> { secondParkingLot });
+            var manager = new Manager(new List<PickerParker> { firstParkingLot , parkingBoy});
             manager.Park(new Car("Not care1"));
             ParkCarResult parkCarResult = manager.Park(new Car("Not care2"));
             Assert.Equal(ParkCarResult.Success, parkCarResult);
@@ -100,8 +100,8 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoys = new List<ParkingBoyBase>{new SmartParkingBoy(new List<ParkingLot>{parkingLot})};
-            var manager = new Manager(new List<ParkingLot>(), parkingBoys);
+            var parkingBoys =  new SmartParkingBoy(new List<PickerParker> { parkingLot });
+            var manager = new Manager(new List<PickerParker>{parkingBoys});
             manager.Park(car);
             Car pickedCar = manager.Pick(carId);
             Assert.Same(car, pickedCar);

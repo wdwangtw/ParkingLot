@@ -5,7 +5,7 @@ namespace ParkingLots
 {
     public class SuperParkingBoy : ParkingBoyBase
     {
-        public SuperParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots, ParkingLotProviderType.Super)
+        public SuperParkingBoy(List<PickerParker> parkingLots) : base(parkingLots, ParkingLotProviderType.Super)
         {
         }
     }

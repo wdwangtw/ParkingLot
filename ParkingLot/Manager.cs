@@ -3,27 +3,26 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class Manager
+    public class Manager : PickerParker
     {
-        readonly List<ParkingBoyBase> parkingBoys = new List<ParkingBoyBase>();
+        readonly List<PickerParker> pickerParkers;
 
-        public Manager(List<ParkingLot> parkingLots, List<ParkingBoyBase> parkingBoys)
+        public Manager(List<PickerParker> pickerParkers)
         {
-            this.parkingBoys.AddRange(parkingBoys);
-            this.parkingBoys.Add(new SuperParkingBoy(parkingLots));
+            this.pickerParkers = pickerParkers;
         }
 
-        public ParkCarResult Park(Car car)
+        public override ParkCarResult Park(Car car)
         {
-            return parkingBoys.Any(boy => boy.Park(car) == ParkCarResult.Success)
+            return pickerParkers.Any(pickerParker => pickerParker.Park(car) == ParkCarResult.Success)
                 ? ParkCarResult.Success
                 : ParkCarResult.NoParkingSpace;
         }
 
-        public Car Pick(string carId)
+        public override Car Pick(string carId)
         {
-            return parkingBoys.
-                Select(parkingLot => parkingLot.Pick(carId)).
+            return pickerParkers.
+                Select(pickerParker => pickerParker.Pick(carId)).
                 FirstOrDefault(picked => picked != null);
         }
     }

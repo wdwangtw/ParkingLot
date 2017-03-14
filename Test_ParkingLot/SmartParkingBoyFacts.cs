@@ -12,7 +12,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> {parkingLot});
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { parkingLot });
             smartParkingBoy.Park(car);
             
             Car pickedCar = parkingLot.Pick(carId);
@@ -26,7 +26,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> { parkingLot });
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { parkingLot });
             parkingLot.Park(car);
 
             Car pickedCar = smartParkingBoy.Pick(carId);
@@ -40,7 +40,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> { parkingLot });
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { parkingLot });
             smartParkingBoy.Park(car);
 
             Car pickedCar = smartParkingBoy.Pick(carId);
@@ -53,7 +53,7 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(1);
             var secondParkingLot = new ParkingLot(1);
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> { firstParkingLot, secondParkingLot });
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { firstParkingLot, secondParkingLot });
             smartParkingBoy.Park(new Car("Not care1"));
             ParkCarResult parkCarResult = smartParkingBoy.Park(new Car("Not care2"));
             Assert.Equal(ParkCarResult.Success, parkCarResult);
@@ -69,7 +69,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> { parkingLot });
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { parkingLot });
             smartParkingBoy.Park(car);
             Car pickedCar = smartParkingBoy.Pick(carId);
             Assert.Same(car, pickedCar);
@@ -83,7 +83,7 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(4);
             var secondParkingLot = new ParkingLot(4);
-            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> {firstParkingLot, secondParkingLot});
+            var smartParkingBoy = new SmartParkingBoy(new List<PickerParker> { firstParkingLot, secondParkingLot });
             firstParkingLot.Park(new Car("notcare"));
             const string carId = "123";
             var car = new Car(carId);

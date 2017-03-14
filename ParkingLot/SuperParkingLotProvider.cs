@@ -5,7 +5,7 @@ namespace ParkingLots
 {
     public class SuperParkingLotProvider : IParkingLotProvider
     {
-        public ParkingLot GetParkingLot(List<ParkingLot> parkingLots)
+        public PickerParker GetParkingLot(List<PickerParker> parkingLots)
         {
             return parkingLots.OrderByDescending(p => p.EmptyParkingSpaceRatio()).FirstOrDefault();
         }
