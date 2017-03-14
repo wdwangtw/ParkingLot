@@ -4,6 +4,6 @@
     {
         Success,
         NoParkingSpace,
-        NoParkingBoyType
+        NoParkingLotProviderType
     }
 }

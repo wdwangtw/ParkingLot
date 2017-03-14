@@ -6,18 +6,24 @@ namespace ParkingLots
     public abstract class ParkingBoyBase
     {
         protected List<ParkingLot> parkingLots;
-        readonly IParker parker;
+        readonly IParkingLotProvider parkingLotProvider;
 
-        protected ParkingBoyBase(List<ParkingLot> parkingLots, ParkingBoyType type)
+        protected ParkingBoyBase(List<ParkingLot> parkingLots, ParkingLotProviderType type)
         {
             this.parkingLots = new List<ParkingLot>();
             this.parkingLots.AddRange(parkingLots);
-            parker = ParkerFactory.CreateParker(type);
+            parkingLotProvider = ParkingLotProviderFactory.CreateParkingLotProvider(type);
         }
 
         public ParkCarResult Park(Car car)
         {
-            return parker != null ? parker.ParkCar(parkingLots, car) : ParkCarResult.NoParkingBoyType;
+            if (parkingLotProvider != null)
+            {
+                ParkingLot parkingLot = parkingLotProvider.GetParkingLot(parkingLots);
+                return parkingLot != null ? parkingLot.Park(car) : ParkCarResult.NoParkingSpace;
+            }
+
+            return ParkCarResult.NoParkingLotProviderType;
         }
 
         public Car Pick(string carId)
