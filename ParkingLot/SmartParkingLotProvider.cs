@@ -5,9 +5,9 @@ namespace ParkingLots
 {
     public class SmartParkingLotProvider : IParkingLotProvider
     {
-        public PickerParker GetParkingLot(List<PickerParker> parkingLots)
+        public IPickerParker GetParkingLot(List<IPickerParker> parkingLots)
         {
-            return parkingLots.OrderByDescending(p => p.EmptyParkingSpace()).FirstOrDefault();
+            return parkingLots.OrderByDescending(p => (p as ParkingLot).EmptyParkingSpace()).FirstOrDefault();
         }
     }
 }

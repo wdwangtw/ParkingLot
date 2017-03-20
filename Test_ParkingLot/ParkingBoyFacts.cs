@@ -13,7 +13,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { parkingLot });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { parkingLot });
             parkingBoy.Park(car);
             
             Car pickedCar = parkingBoy.Pick(carId);
@@ -26,7 +26,7 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(1);
             var secondParkingLot = new ParkingLot(1);
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { firstParkingLot, secondParkingLot });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { firstParkingLot, secondParkingLot });
             const string carId = "ABC123";
             var car = new Car(carId);
             parkingBoy.Park(car);
@@ -41,7 +41,7 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(1);
             var secondParkingLot = new ParkingLot(1);
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { firstParkingLot, secondParkingLot });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { firstParkingLot, secondParkingLot });
             const string carId = "ABC123";
             var car = new Car(carId);
             parkingBoy.Park(new Car("Not care"));
@@ -55,7 +55,7 @@ namespace Test_ParkingLot
         [Fact]
         void should_pick_the_car_when_the_first_parking_lot_is_full_and_park_the_car()
         {
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { new ParkingLot(1), new ParkingLot(1) });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { new ParkingLot(1), new ParkingLot(1) });
             const string carId = "ABC123";
             var car = new Car(carId);
             parkingBoy.Park(new Car("not care"));
@@ -71,7 +71,7 @@ namespace Test_ParkingLot
         {
             var firstParkingLot = new ParkingLot(1);
             var secondParkingLot = new ParkingLot(1);
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { firstParkingLot, secondParkingLot });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { firstParkingLot, secondParkingLot });
             parkingBoy.Park(new Car("Not care1"));
             ParkCarResult parkCarResult = parkingBoy.Park(new Car("Not care2"));
             Assert.Equal(ParkCarResult.Success, parkCarResult);
@@ -87,7 +87,7 @@ namespace Test_ParkingLot
             const string carId = "ABC123";
             var car = new Car(carId);
             var parkingLot = new ParkingLot();
-            var parkingBoy = new ParkingBoy(new List<PickerParker> { parkingLot });
+            var parkingBoy = new ParkingBoy(new List<ParkingLot> { parkingLot });
             parkingBoy.Park(car);
             Car pickedCar = parkingBoy.Pick(carId);
             Assert.Same(car, pickedCar);

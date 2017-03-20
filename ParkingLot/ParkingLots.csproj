@@ -44,7 +44,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="IParkingLotProvider.cs" />
     <Compile Include="CommonParkingLotProvider.cs" />
-    <Compile Include="PickerParker.cs" />
+    <Compile Include="IPickerParker.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="SmartParkingLotProvider.cs" />
     <Compile Include="ParkCarResult.cs" />

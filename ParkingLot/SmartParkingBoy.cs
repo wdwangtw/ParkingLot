@@ -5,7 +5,7 @@ namespace ParkingLots
 {
     public class SmartParkingBoy : ParkingBoyBase
     {
-        public SmartParkingBoy(List<PickerParker> parkingLots) : base(parkingLots, ParkingLotProviderType.Smart)
+        public SmartParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots, ParkingLotProviderType.Smart)
         {
         }
     }

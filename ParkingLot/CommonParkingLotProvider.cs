@@ -5,9 +5,9 @@ namespace ParkingLots
 {
     public class CommonParkingLotProvider : IParkingLotProvider
     {
-        public PickerParker GetParkingLot(List<PickerParker> parkingLots)
+        public IPickerParker GetParkingLot(List<IPickerParker> parkingLots)
         {
-            return parkingLots.FirstOrDefault(parkingLot => parkingLot.EmptyParkingSpace() != 0);
+            return parkingLots.FirstOrDefault(p => (p as ParkingLot).EmptyParkingSpace() != 0);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class ParkingLot : PickerParker
+    public class ParkingLot : IPickerParker
     {
         readonly List<Car> cars;
         readonly int parkingSpaceCount;
@@ -14,7 +14,7 @@ namespace ParkingLots
             this.parkingSpaceCount = parkingSpaceCount;
         }
 
-        public override ParkCarResult Park(Car car)
+        public ParkCarResult Park(Car car)
         {
             if (cars.Count != parkingSpaceCount)
             {
@@ -25,19 +25,19 @@ namespace ParkingLots
             return ParkCarResult.NoParkingSpace;
         }
 
-        public override Car Pick(string carId)
+        public Car Pick(string carId)
         {
             Car picked = cars.FirstOrDefault(car => car.Id == carId);
             cars.Remove(picked);
             return picked;
         }
 
-        public override int EmptyParkingSpace()
+        public int EmptyParkingSpace()
         {
             return parkingSpaceCount - cars.Count;
         }
 
-        public override double EmptyParkingSpaceRatio()
+        public double EmptyParkingSpaceRatio()
         {
             return EmptyParkingSpace()*1.0 / parkingSpaceCount;
         }

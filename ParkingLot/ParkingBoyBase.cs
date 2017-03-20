@@ -3,19 +3,19 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public abstract class ParkingBoyBase : PickerParker
+    public abstract class ParkingBoyBase : IPickerParker
     {
-        protected List<PickerParker> parkingLots;
+        protected List<IPickerParker> parkingLots;
         readonly IParkingLotProvider parkingLotProvider;
 
-        protected ParkingBoyBase(List<PickerParker> parkingLots, ParkingLotProviderType type)
+        protected ParkingBoyBase(List<ParkingLot> parkingLots, ParkingLotProviderType type)
         {
-            this.parkingLots = new List<PickerParker>();
+            this.parkingLots = new List<IPickerParker>();
             this.parkingLots.AddRange(parkingLots);
             parkingLotProvider = ParkingLotProviderFactory.CreateParkingLotProvider(type);
         }
 
-        public override ParkCarResult Park(Car car)
+        public virtual ParkCarResult Park(Car car)
         {
             if (parkingLotProvider != null)
             {
@@ -26,7 +26,7 @@ namespace ParkingLots
             return ParkCarResult.NoParkingLotProviderType;
         }
 
-        public override Car Pick(string carId)
+        public virtual Car Pick(string carId)
         {
             return parkingLots.
                 Select(parkingLot => parkingLot.Pick(carId)).

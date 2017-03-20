@@ -4,6 +4,6 @@ namespace ParkingLots
 {
     public interface IParkingLotProvider
     {
-        PickerParker GetParkingLot(List<PickerParker> parkingLots);
+        IPickerParker GetParkingLot(List<IPickerParker> parkingLots);
     }
 }
