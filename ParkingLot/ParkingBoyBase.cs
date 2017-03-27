@@ -1,36 +1,20 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace ParkingLots
 {
-    public abstract class ParkingBoyBase : IPickerParker
+    public abstract class ParkingBoyBase : PickerParker
     {
-        protected List<IPickerParker> parkingLots;
-        readonly IParkingLotProvider parkingLotProvider;
+        readonly IParkable parkable;
 
-        protected ParkingBoyBase(List<ParkingLot> parkingLots, ParkingLotProviderType type)
+        protected ParkingBoyBase(List<ParkingLot> parkingLots, ParkerType type)
         {
-            this.parkingLots = new List<IPickerParker>();
-            this.parkingLots.AddRange(parkingLots);
-            parkingLotProvider = ParkingLotProviderFactory.CreateParkingLotProvider(type);
+            pickerParkers.AddRange(parkingLots);
+            parkable = ParkableFactory.CreateParkable(type);
         }
 
-        public virtual ParkCarResult Park(Car car)
+        public override ParkCarResult Park(Car car)
         {
-            if (parkingLotProvider != null)
-            {
-                var parkingLot = parkingLotProvider.GetParkingLot(parkingLots);
-                return parkingLot != null ? parkingLot.Park(car) : ParkCarResult.NoParkingSpace;
-            }
-
-            return ParkCarResult.NoParkingLotProviderType;
-        }
-
-        public virtual Car Pick(string carId)
-        {
-            return parkingLots.
-                Select(parkingLot => parkingLot.Pick(carId)).
-                FirstOrDefault(picked => picked != null);
+            return parkable.ParkCar(pickerParkers, car);
         }
     }
 }

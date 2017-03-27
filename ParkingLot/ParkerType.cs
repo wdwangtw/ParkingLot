@@ -1,6 +1,6 @@
 ﻿namespace ParkingLots
 {
-    public enum ParkingLotProviderType
+    public enum ParkerType
     {
         Commen,
         Smart,

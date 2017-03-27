@@ -3,27 +3,35 @@ using System.Linq;
 
 namespace ParkingLots
 {
-    public class Manager : IPickerParker
+    public class Manager : PickerParker
     {
-        readonly List<IPickerParker> pickerParkers;
+        readonly IParkable parkable;
 
         public Manager(List<IPickerParker> pickerParkers)
         {
             this.pickerParkers = pickerParkers;
+            parkable = ParkableFactory.CreateParkable(ParkerType.Commen);
         }
 
-        public virtual ParkCarResult Park(Car car)
+        public override string NameDescription
         {
-            return pickerParkers.Any(pickerParker => pickerParker.Park(car) == ParkCarResult.Success)
-                ? ParkCarResult.Success
-                : ParkCarResult.NoParkingSpace;
+            get { return "Manager"; }
         }
 
-        public virtual Car Pick(string carId)
+        public override ParkCarResult Park(Car car)
         {
-            return pickerParkers.
-                Select(pickerParker => pickerParker.Pick(carId)).
-                FirstOrDefault(picked => picked != null);
+            return parkable.ParkCar(pickerParkers, car);
         }
+//
+//        public override string Description(string pre)
+//        {
+//            string des = string.Format(
+//                "{0} {1} {2}",
+//                "Manager",
+//                ((IPickerParker) this).ParkingSpaceCount() - ((IPickerParker) this).EmptyParkingSpace(),
+//                ((IPickerParker) this).ParkingSpaceCount());
+//            pickerParkers.ForEach(p => des += "\n\t" + p.Description());
+//            return des;
+//        }
     }
 }

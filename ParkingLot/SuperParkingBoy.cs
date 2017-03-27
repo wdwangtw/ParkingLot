@@ -5,8 +5,13 @@ namespace ParkingLots
 {
     public class SuperParkingBoy : ParkingBoyBase
     {
-        public SuperParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots, ParkingLotProviderType.Super)
+        public SuperParkingBoy(List<ParkingLot> parkingLots) : base(parkingLots, ParkerType.Super)
         {
+        }
+
+        public override string NameDescription
+        {
+            get { return "SuperBoy"; }
         }
     }
 }

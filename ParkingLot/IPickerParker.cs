@@ -6,5 +6,8 @@ namespace ParkingLots
     {
         ParkCarResult Park(Car car);
         Car Pick(string carId);
+        int EmptyParkingSpace();
+        int ParkingSpaceCount();
+        string Description(string pre);
     }
 }

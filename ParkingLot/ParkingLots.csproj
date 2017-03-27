@@ -42,17 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
-    <Compile Include="IParkingLotProvider.cs" />
-    <Compile Include="CommonParkingLotProvider.cs" />
+    <Compile Include="IParkable.cs" />
+    <Compile Include="CommonParkable.cs" />
     <Compile Include="IPickerParker.cs" />
     <Compile Include="Manager.cs" />
-    <Compile Include="SmartParkingLotProvider.cs" />
+    <Compile Include="Pickable.cs" />
+    <Compile Include="PickerParker.cs" />
+    <Compile Include="SmartParkable.cs" />
     <Compile Include="ParkCarResult.cs" />
-    <Compile Include="SuperParkingLotProvider.cs" />
-    <Compile Include="ParkingLotProviderFactory.cs" />
+    <Compile Include="SuperParkable.cs" />
+    <Compile Include="ParkableFactory.cs" />
     <Compile Include="ParkingBoy.cs" />
     <Compile Include="ParkingBoyBase.cs" />
-    <Compile Include="ParkingLotProviderType.cs" />
+    <Compile Include="ParkerType.cs" />
     <Compile Include="ParkingLot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

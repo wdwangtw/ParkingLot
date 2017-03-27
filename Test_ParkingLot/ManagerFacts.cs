@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ParkingLots;
 using Xunit;
 
@@ -108,6 +109,42 @@ namespace Test_ParkingLot
 
             pickedCar = manager.Pick(carId);
             Assert.Null(pickedCar);
+        }
+
+        [Fact]
+        void should_show_parking_lots_and_parking_boys_parking_info()
+        {
+            List<Car> cars = CreateCars(10);
+
+            ParkingLot ParkingLot1 = CreateParkingLots(3, cars.GetRange(0, 2));
+            ParkingLot ParkingLot2 = CreateParkingLots(3, cars.GetRange(2, 1));
+            ParkingLot ParkingLot3 = CreateParkingLots(3, cars.GetRange(3, 2));
+            ParkingLot ParkingLot4 = CreateParkingLots(3, cars.GetRange(5, 3));
+            ParkingLot ParkingLot5 = CreateParkingLots(3, cars.GetRange(8, 2));
+
+            var parkingBoy = new ParkingBoy(new List<ParkingLot>{ParkingLot1, ParkingLot2});
+            var superParkingBoy = new SuperParkingBoy(new List<ParkingLot> { ParkingLot3 });
+            var smartParkingBoy = new SmartParkingBoy(new List<ParkingLot> { ParkingLot4 });
+
+            var manager = new Manager(new List<IPickerParker>{parkingBoy, ParkingLot5, superParkingBoy, smartParkingBoy});
+
+            string des = manager.Description("");
+            const string expectedDes = "Manager 10 15\n\t ParkingBoy 3 6\n\t\t ParkingLot 2 3\n\t\t ParkingLot 1 3\n\t ParkingLot 2 3\n\t SuperBoy 2 3\n\t\t ParkingLot 2 3\n\t SmartBoy 3 3\n\t\t ParkingLot 3 3\n";
+
+            Assert.Equal(expectedDes, des);
+
+        }
+
+        ParkingLot CreateParkingLots(int spaceCount, List<Car> cars)
+        {
+            var parkingLot = new ParkingLot(spaceCount);
+            cars.ForEach(car => parkingLot.Park(car));
+            return parkingLot;
+        }
+
+        List<Car> CreateCars(int carCount)
+        {
+            return Enumerable.Range(0, carCount).Select(i => new Car(i.ToString())).ToList();
         }
     }
 }

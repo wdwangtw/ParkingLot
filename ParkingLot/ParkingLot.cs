@@ -37,6 +37,23 @@ namespace ParkingLots
             return parkingSpaceCount - cars.Count;
         }
 
+        public int ParkingSpaceCount()
+        {
+            return parkingSpaceCount;
+        }
+
+        public string Description(string pre)
+        {
+            string des = string.Format(
+                "{0} {1} {2} {3}\n",
+                pre,
+                "ParkingLot",
+                ParkingSpaceCount() - EmptyParkingSpace(),
+                ParkingSpaceCount());
+
+            return des;
+        }
+
         public double EmptyParkingSpaceRatio()
         {
             return EmptyParkingSpace()*1.0 / parkingSpaceCount;
